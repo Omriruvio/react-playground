@@ -39,6 +39,58 @@ const list = [{
 
 const titleText = 'Hello from JSX!';
 
+// function User (props) {
+//   return (
+//     <div className="user-container">
+//       <h2>{props.name}</h2>
+//       <h3>{props.title}</h3>
+//       {props.children}
+//     </div>
+//   )
+// }
+
+// User class component
+class User extends React.Component {
+  constructor() {
+    super();
+
+    // starting values for component's state
+    this.state = {
+      rating: 0,
+    };
+  }
+
+  /*
+   * event handlers: change the state
+   */
+  handleLike = () => {
+    this.setState({ rating: this.state.rating + 1 });
+  };
+
+  handleDislike = () => {
+    this.setState({ rating: this.state.rating - 1 });
+  };
+
+  // render the JSX structure
+  render() {
+    return (
+      <div>
+        <img
+          className="user-image"
+          src={`https://code.s3.yandex.net/web-code/react/${this.props.id}.png`}
+          width="75"
+        />
+        <p>{this.props.name}</p>
+        <div className="rating">
+          <button className="like-button" onClick={this.handleLike}>👍</button>
+          {this.state.rating}
+          <button className="like-button" onClick={this.handleDislike}>👎</button>
+        </div>
+      </div>
+    );
+  }
+}
+
 ReactDOM.render(
   (<>
     <div style={styles}>
@@ -60,6 +112,16 @@ ReactDOM.render(
         </li>
       ))}
     </ul>
+    {/* <User name='Omri' title='Full stack web developer'>
+      <p>Javascript, HTML, CSS</p>
+      <p>And REACT!!!</p>
+    </User> */}
+
+    <h2>My Imaginary Friends:</h2>
+    <User id="1" name="Gregory" />
+    <User id="2" name="James" />
+    <User id="3" name="Allison" />
+
   </>),
   document.querySelector('#root'),
 );

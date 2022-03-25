@@ -5,7 +5,7 @@ body {
 
 #root {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: slategray;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,24 @@ body {
   margin: 0;
   padding: 0;
   /* text-align: center; */
+}
+
+.user-image {
+  width: 100%;
+}
+
+.like-button {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+}
+
+.rating {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
 /* normalize & fonts */
