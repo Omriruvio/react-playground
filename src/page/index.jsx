@@ -74,7 +74,7 @@ class User extends React.Component {
   // render the JSX structure
   render() {
     return (
-      <div>
+      <div className="friend-container">
         <img
           className="user-image"
           src={`https://code.s3.yandex.net/web-code/react/${this.props.id}.png`}
@@ -82,9 +82,9 @@ class User extends React.Component {
         />
         <p>{this.props.name}</p>
         <div className="rating">
-          <button className="like-button" onClick={this.handleLike}>👍</button>
-          {this.state.rating}
-          <button className="like-button" onClick={this.handleDislike}>👎</button>
+          <button className="like-button" onClick={this.handleLike} disabled={this.state.rating > 0}>👍</button>
+          <div style={{width: '2em', textAlign: 'center'}}>{this.state.rating}</div>
+          <button className="like-button" onClick={this.handleDislike} disabled={this.state.rating < 0}>👎</button>
         </div>
       </div>
     );
@@ -118,9 +118,11 @@ ReactDOM.render(
     </User> */}
 
     <h2>My Imaginary Friends:</h2>
-    <User id="1" name="Gregory" />
-    <User id="2" name="James" />
-    <User id="3" name="Allison" />
+    <div className="friends-wrapper">
+      <User id="1" name="Gregory" />
+      <User id="2" name="James" />
+      <User id="3" name="Allison" />
+    </div>
 
   </>),
   document.querySelector('#root'),

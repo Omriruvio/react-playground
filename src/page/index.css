@@ -20,7 +20,11 @@ body {
 }
 
 .user-image {
-  width: 100%;
+  min-width: 100px;
+  min-height: 100px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .like-button {
@@ -35,6 +39,20 @@ body {
   justify-content: space-around;
   align-items: center;
   margin-bottom: 50px;
+}
+
+.friend-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.friends-wrapper {
+  display: flex;
+  margin: 5%;
+  justify-content: center;
+  align-items: center;
 }
 
 /* normalize & fonts */
