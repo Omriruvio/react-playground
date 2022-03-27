@@ -39,17 +39,6 @@ const list = [{
 
 const titleText = 'Hello from JSX!';
 
-// function User (props) {
-//   return (
-//     <div className="user-container">
-//       <h2>{props.name}</h2>
-//       <h3>{props.title}</h3>
-//       {props.children}
-//     </div>
-//   )
-// }
-
-// User class component
 class User extends React.Component {
   constructor() {
     super();
@@ -91,8 +80,45 @@ class User extends React.Component {
   }
 }
 
+class Clock extends React.Component {
+  constructor (props) { 
+    super(props);
+    this.state = {
+      hours: 0, minutes: 0, seconds: 0, ms: 0,
+    }
+  }
+
+  setTime() {
+    const now = new Date();
+    this.setState({
+      hours: now.getHours(),
+      minutes: now.getMinutes(),
+      seconds: now.getSeconds(),
+      ms: String(now.getMilliseconds()).padStart(3, 0)
+    })
+  }
+
+  componentDidMount() {
+    this.setTime();
+  }
+
+  componentDidUpdate() {
+    requestAnimationFrame(() => {
+      this.setTime();
+    })
+  }
+  render () {
+    return (
+      <div style={{paddingBottom: '20px', fontSize: '1.5rem'}}>{`${this.state.hours}:${this.state.minutes}:${this.state.seconds}:${this.state.ms}`}</div>
+    )
+  }
+}
+
+
+
 ReactDOM.render(
   (<>
+    <Clock />
     <div style={styles}>
       <h1 className="title">{titleText}</h1>
     </div>
