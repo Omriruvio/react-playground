@@ -114,11 +114,24 @@ class Clock extends React.Component {
   }
 }
 
+function ClockButton (props) {
+  const [showClock, toggleShowClock] = React.useState(false);
+  function handleWatchButton () {
+    toggleShowClock(!showClock)
+  }
+  return (
+    <>
+      <button style={{marginBottom: '20px'}} onClick={handleWatchButton}>Show clock</button>
+      {showClock && <Clock />}
+    </>
+  )
+}
 
 
 ReactDOM.render(
   (<>
-    <Clock />
+    <ClockButton />
+    
     <div style={styles}>
       <h1 className="title">{titleText}</h1>
     </div>
